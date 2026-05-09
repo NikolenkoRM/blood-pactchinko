@@ -1,125 +1,78 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scenes/pachinko/Pin.gd" id="2_fwb4c"]
 [ext_resource type="PackedScene" path="res://scenes/pachinko/Pin.tscn" id="2_pin"]
 
 [sub_resource type="RectangleShape2D" id="Rect_wall_vertical"]
-size = Vector2(14, 300)
+size = Vector2(14, 700)
 
 [sub_resource type="RectangleShape2D" id="Rect_wall_top"]
-size = Vector2(320, 14)
+size = Vector2(388, 14)
 
 [sub_resource type="RectangleShape2D" id="Rect_bottom_trap"]
-size = Vector2(300, 22)
+size = Vector2(360, 22)
 
 [sub_resource type="RectangleShape2D" id="Rect_test_pocket"]
-size = Vector2(56, 26)
+size = Vector2(80, 26)
 
 [node name="PachinkoBoard" type="Node2D" unique_id=1488913413]
 
 [node name="WallLeft" type="StaticBody2D" parent="." unique_id=1568206290]
-position = Vector2(-156, 0)
+position = Vector2(-187, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=403295896]
 shape = SubResource("Rect_wall_vertical")
 
 [node name="WallRight" type="StaticBody2D" parent="." unique_id=1030182356]
-position = Vector2(156, 0)
+position = Vector2(187, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=934368143]
 shape = SubResource("Rect_wall_vertical")
 
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=68380110]
-position = Vector2(0, -156)
+position = Vector2(0, -337)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1222506809]
 shape = SubResource("Rect_wall_top")
 
 [node name="BottomTrap" type="Area2D" parent="." unique_id=1751657970]
-position = Vector2(0, 156)
+position = Vector2(0, 337)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomTrap" unique_id=1457531113]
 shape = SubResource("Rect_bottom_trap")
 
 [node name="TestPocket" type="Area2D" parent="." unique_id=125564916]
-position = Vector2(0, 132)
+position = Vector2(0, 310)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPocket" unique_id=1993905930]
 shape = SubResource("Rect_test_pocket")
 
 [node name="Pin01" type="StaticBody2D" parent="." unique_id=1721299374 instance=ExtResource("2_pin")]
-position = Vector2(-64, -90)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-120, -180)
 [node name="Pin02" type="StaticBody2D" parent="." unique_id=1753015739 instance=ExtResource("2_pin")]
-position = Vector2(-32, -90)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-60, -180)
 [node name="Pin03" type="StaticBody2D" parent="." unique_id=773853439 instance=ExtResource("2_pin")]
-position = Vector2(0, -90)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(0, -180)
 [node name="Pin04" type="StaticBody2D" parent="." unique_id=936285366 instance=ExtResource("2_pin")]
-position = Vector2(32, -90)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(60, -180)
 [node name="Pin05" type="StaticBody2D" parent="." unique_id=2060121775 instance=ExtResource("2_pin")]
-position = Vector2(64, -90)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(120, -180)
 [node name="Pin06" type="StaticBody2D" parent="." unique_id=1396427107 instance=ExtResource("2_pin")]
-position = Vector2(-48, -55)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-90, -100)
 [node name="Pin07" type="StaticBody2D" parent="." unique_id=219584937 instance=ExtResource("2_pin")]
-position = Vector2(-16, -55)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-30, -100)
 [node name="Pin08" type="StaticBody2D" parent="." unique_id=1595080220 instance=ExtResource("2_pin")]
-position = Vector2(16, -55)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(30, -100)
 [node name="Pin09" type="StaticBody2D" parent="." unique_id=1829315239 instance=ExtResource("2_pin")]
-position = Vector2(48, -55)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(90, -100)
 [node name="Pin10" type="StaticBody2D" parent="." unique_id=1565087769 instance=ExtResource("2_pin")]
-position = Vector2(80, -55)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-120, -20)
 [node name="Pin11" type="StaticBody2D" parent="." unique_id=1485545154 instance=ExtResource("2_pin")]
-position = Vector2(-64, -20)
-script = ExtResource("2_fwb4c")
-level = 1
-
+position = Vector2(-60, -20)
 [node name="Pin12" type="StaticBody2D" parent="." unique_id=62424488 instance=ExtResource("2_pin")]
-position = Vector2(-32, -20)
-script = ExtResource("2_fwb4c")
-level = 1
-
-[node name="Pin13" type="StaticBody2D" parent="." unique_id=1096103776 instance=ExtResource("2_pin")]
 position = Vector2(0, -20)
-script = ExtResource("2_fwb4c")
-level = 1
-
+[node name="Pin13" type="StaticBody2D" parent="." unique_id=1096103776 instance=ExtResource("2_pin")]
+position = Vector2(60, -20)
 [node name="Pin14" type="StaticBody2D" parent="." unique_id=106734053 instance=ExtResource("2_pin")]
-position = Vector2(32, -20)
-script = ExtResource("2_fwb4c")
-level = 1
-
-[node name="Pin15" type="StaticBody2D" parent="." unique_id=2041520775 instance=ExtResource("2_pin")]
-position = Vector2(64, -20)
-script = ExtResource("2_fwb4c")
-level = 1
+position = Vector2(120, -20)
