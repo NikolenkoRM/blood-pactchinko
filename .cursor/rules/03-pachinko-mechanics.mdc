@@ -1,0 +1,40 @@
+---
+description: Pachinko board mechanics context
+globs: scenes/pachinko/**, scripts/SphereLogic.gd, scripts/DevilsGaze.gd
+---
+
+# Pachinko Mechanics Reference
+
+## Sphere value system
+- Every sphere has `value: int` (default 1)
+- On hit with any board element: `sphere.value *= element.level`
+- When sphere enters a pocket: `win_bank.add(sphere.value)` spheres added to bank
+- Higher value spheres are physically larger (visual only, same collision behavior)
+- Sphere is permanently lost if it falls off the bottom without entering a pocket
+
+## Board elements
+- **Pin** (StaticBody2D): deflects sphere, multiplies its value, yields gold equal to pin.level
+- **Bumper** (Area2D): deflects with impulse force, multiplies value, yields gold
+- **Pocket** (Area2D, bottom): converts sphere value → spheres in win bank
+- **BonusPocket** (Area2D): same as pocket + emits `bonus_game_triggered` signal
+
+## Devil's Gaze
+- Scale: 0.0 to 100.0
+- Increments every time a sphere is launched from the pool
+- Formula: `increment = BASE_INCREMENT * exp(GROWTH_RATE * spheres_this_session)`
+  - BASE_INCREMENT = 0.1, GROWTH_RATE = 0.045
+- Penalty at session end: `int(current_quota * devils_gaze / 100.0)` subtracted from win bank
+- Reduced by quota payment: up to 50 points reduction for 100% payment
+- Resets at start of each new round
+
+## Sphere pool (launch mechanic)
+- Player adds spheres to pool before or during session
+- Crank controls launch angle and force (analog input, `Input.get_axis`)
+- Stronger crank deflection = higher initial velocity
+- Devil's Gaze increases PER SPHERE LAUNCHED (not per sphere in pool)
+
+## Session lifecycle
+- Session START: at least 1 sphere added to pool
+- Session END: pool empty AND no spheres on board → player claims win bank
+- Player can add spheres mid-session at any time
+- Win bank is locked (uncollectable) while session is active

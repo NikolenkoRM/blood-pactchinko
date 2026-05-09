@@ -1,0 +1,48 @@
+---
+description: Project architecture and scene guidelines
+alwaysApply: false
+---
+
+# Architecture Guidelines
+
+## Scene hierarchy rules
+- PachinkoBoard owns all board elements and spheres
+- Sphere is RigidBody2D — never move it manually, only apply impulses
+- Board elements (Pin, Bumper, Pocket) are StaticBody2D or Area2D
+- GameManager orchestrates round flow — it does NOT contain gameplay logic
+- UI scenes are purely visual — they read from GameState via signals, never mutate it
+
+## Autoloads (global singletons)
+- `SignalBus` — only signal declarations, no logic
+- `GameState` — mutable global state, no UI logic
+- Never add new autoloads without strong justification
+
+## Resource types
+- `PlayerData` extends Resource — serialize player state
+- `BoardLayout` extends Resource — defines predefined element slot positions
+- `BoardElement` extends Resource — type, level, special properties
+
+## Folder structure
+res://
+├── autoload/ SignalBus.gd, GameState.gd
+├── scenes/
+│ ├── game/ GameManager.tscn, RoundManager.tscn
+│ ├── pachinko/ PachinkoBoard.tscn, Sphere.tscn, Pin.tscn, Bumper.tscn, Pocket.tscn
+│ ├── ui/ HUD.tscn, Shop.tscn, Inventory.tscn, BoardEditor.tscn
+│ └── minigames/ WheelOfFortune.tscn, SlotDrums.tscn
+├── scripts/ Pure logic classes (no Node inheritance)
+│ SphereLogic.gd, DevilsGaze.gd, QuotaSystem.gd, MergeSystem.gd, BonusGameQueue.gd
+├── resources/ PlayerData.gd, BoardLayout.gd, BoardElement.gd
+├── assets/
+│ ├── sprites/
+│ ├── shaders/ ps1_dither.gdshader, crt_overlay.gdshader
+│ ├── sounds/
+│ └── fonts/
+└── addons/
+
+
+## DO NOT
+- Do not put game logic in UI scripts
+- Do not reference scenes by path string — use preload()
+- Do not use yield() — use await signal instead
+- Do not generate .tscn files — always create scenes manually in Godot Editor

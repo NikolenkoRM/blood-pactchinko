@@ -1,0 +1,28 @@
+---
+description: Never auto-generate .tscn scene files
+alwaysApply: true
+---
+
+# Scene Generation Policy
+
+NEVER generate or modify .tscn files directly.
+
+Godot scene files (.tscn) have a complex serialization format that breaks easily
+when edited outside the Godot Editor. Even small errors cause scenes to fail loading.
+
+## When asked to create a scene, instead:
+1. Provide the GDScript file(s) for that scene
+2. Write step-by-step instructions for manually setting up the scene in Godot Editor:
+   - Which root node type to use
+   - Which child nodes to add and their names
+   - Which script to attach
+   - Which properties to set in the Inspector
+   - Which signals to connect
+
+## Example output format:
+Создание сцены Sphere.tscn (вручную в Godot Editor):
+Создай новую сцену, корневой узел: RigidBody2D, переименуй в "Sphere"
+Добавь дочерний узел: CollisionShape2D (форма: CircleShape2D, radius: 8)
+Добавь дочерний узел: Sprite2D (texture: res://assets/sprites/sphere_1.png)
+Прикрепи скрипт: res://scenes/pachinko/Sphere.gd
+В Inspector → RigidBody2D: gravity_scale = 1.5, linear_damp = 0.1

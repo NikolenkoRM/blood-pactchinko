@@ -1,0 +1,45 @@
+---
+description: GDScript coding standards for this project
+alwaysApply: true
+---
+
+# GDScript Standards
+
+## Language rules
+- Use Godot 4.x GDScript syntax ONLY. Never suggest C#.
+- Always use static typing: `var x: int = 0`, `func foo(bar: String) -> void:`
+- Use `class_name` for reusable classes
+- Prefer `@export` for inspector-editable values
+- Use `const` for values that never change at runtime
+- Use `enum` for named states (e.g. `enum GamePhase { SETUP, PLAYING, PAYOUT }`)
+
+## Signal conventions
+- ALL cross-node communication goes through `SignalBus` autoload
+- Never use `get_node()` or `$NodePath` to call methods on other scenes
+- Local signals (within one scene) are fine to declare and emit directly
+- Signal names: snake_case verbs — `sphere_hit_element`, `quota_paid`
+
+## File & class structure
+- One class per file
+- Order: class_name → extends → signals → enums → constants → @export vars →
+  regular vars → _ready() → _process() → public methods → private methods
+- Private methods: prefix with underscore `_calculate_penalty()`
+- No logic in _ready() beyond node reference caching and signal connections
+
+## Node references
+- Cache node refs in _ready() using @onready:
+  `@onready var _win_bank: WinBank = $WinBank`
+- Never use find_child() or get_node() with long paths
+
+## Comments
+- Write comments in RUSSIAN (matching the project language)
+- Comment WHY, not WHAT
+- Every exported variable needs a comment explaining its purpose
+
+## Error handling
+- Always validate inputs: `assert(amount > 0, "Сумма должна быть положительной")`
+- Use `push_error()` for recoverable errors, `assert()` for programming errors
+
+## Performance
+- Never create objects in _process() — pool or pre-instantiate
+- Use `call_deferred()` when modifying scene tree during physics callbacks

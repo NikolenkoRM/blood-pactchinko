@@ -1,0 +1,34 @@
+---
+description: Blood Pactchinko project context
+alwaysApply: true
+---
+
+# Blood Pactchinko — Project Context
+
+## What this game is
+A roguelite pachinko machine game with an occult/horror atmosphere.
+The player owes a debt to the Devil and must meet a blood quota every round.
+Visual style: PS1-era horror (dithering, CRT, pixel-perfect, limited palette).
+Engine: Godot 4.x. Language: GDScript only.
+
+## Core loop
+1. Player starts each round with a quota of blood spheres to pay the Devil
+2. Player places blood spheres into the pachinko machine pool (or sacrifices HP)
+3. Player launches spheres onto the pachinko board to multiply their value
+4. Devil's Gaze pressure mechanic punishes long sessions exponentially
+5. Player collects win bank, pays quota, proceeds to next round
+6. Shop between rounds: buy board elements, healing, inventory upgrades
+
+## Key systems
+- `SignalBus` (Autoload) — ALL cross-scene communication uses signals, never direct references
+- `GameState` (Autoload) — global mutable state (current round, quota, player data)
+- `PlayerData` (Resource) — HP (starts 20), blood_spheres (starts 50), gold
+- `DevilsGaze` — exponential pressure scale 0-100, resets each round
+- `QuotaSystem` — fixed quotas rounds 1-8, then formula-based exponential scaling
+- `SphereLogic` — sphere value × element level = new value (universal formula)
+
+## Starting values
+- HP: 20 | Max HP: 20 | Starting spheres: 50 | Starting gold: 0
+- 1 HP = 1 blood sphere (conversion rate, spendable in pachinko pool only)
+- Devil's Gaze: BASE_INCREMENT=0.1, GROWTH_RATE=0.045 (exponential per sphere launched)
+- Quota round 1: 50, round 2: 120, round 3: 250, round 4: 500 ...
