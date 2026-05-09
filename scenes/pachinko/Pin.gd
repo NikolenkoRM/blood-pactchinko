@@ -18,3 +18,6 @@ func _on_hit_area_body_entered(body: Node) -> void:
 		return
 	var sphere := body as Sphere
 	sphere.apply_multiplier(level)
+	# Лёгкий случайный боковой толчок чтобы предотвратить застревание
+	var nudge := Vector2(randf_range(-30.0, 30.0), 0.0)
+	sphere.apply_central_impulse(nudge)

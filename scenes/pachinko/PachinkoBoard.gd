@@ -6,7 +6,7 @@ const SPHERE_SCENE_PATH: String = "res://scenes/pachinko/Sphere.tscn"
 ## Сцена сферы; если пусто, выполняется load(SPHERE_SCENE_PATH) при первом запуске.
 @export var sphere_scene: PackedScene
 ## Смещение точки появления сферы относительно позиции доски.
-@export var launch_offset: Vector2 = Vector2.ZERO
+@export var launch_offset: Vector2 = Vector2(0, -280)
 
 var _active_spheres: Array[Sphere] = []
 var _settled_emitted: bool = false
@@ -61,6 +61,3 @@ func _compact_dead_spheres() -> void:
 		if is_instance_valid(sphere):
 			alive.append(sphere)
 	_active_spheres = alive
-
-func _ready() -> void:
-	launch_sphere(400.0, deg_to_rad(90.0))

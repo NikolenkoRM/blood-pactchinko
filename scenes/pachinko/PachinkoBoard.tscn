@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ettkr8e54461"]
 
+[ext_resource type="Script" uid="uid://bgvov6oqedb8b" path="res://scenes/pachinko/PachinkoBoard.gd" id="1_fwb4c"]
 [ext_resource type="PackedScene" path="res://scenes/pachinko/Pin.tscn" id="2_pin"]
 
 [sub_resource type="RectangleShape2D" id="Rect_wall_vertical"]
@@ -15,6 +16,7 @@ size = Vector2(360, 22)
 size = Vector2(80, 26)
 
 [node name="PachinkoBoard" type="Node2D" unique_id=1488913413]
+script = ExtResource("1_fwb4c")
 
 [node name="WallLeft" type="StaticBody2D" parent="." unique_id=1568206290]
 position = Vector2(-187, 0)
