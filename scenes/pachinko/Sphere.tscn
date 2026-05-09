@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://l2dorr8xbdrg"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://d1plgdxh380e7" path="res://scenes/pachinko/Sphere.gd" id="1_ho8e7"]
+[ext_resource type="Script" path="res://scenes/pachinko/Sphere.gd" id="1_ho8e7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sphere"]
 friction = 0.1
@@ -13,10 +13,10 @@ radius = 8.0
 physics_material_override = SubResource("PhysicsMaterial_sphere")
 gravity_scale = 1.5
 linear_damp = 0.05
+script = ExtResource("1_ho8e7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1937869199]
 shape = SubResource("CircleShape2D_sphere")
-script = ExtResource("1_ho8e7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1517150699]
 
