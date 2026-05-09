@@ -61,3 +61,6 @@ func _compact_dead_spheres() -> void:
 		if is_instance_valid(sphere):
 			alive.append(sphere)
 	_active_spheres = alive
+
+func _ready() -> void:
+	launch_sphere(400.0, deg_to_rad(90.0))

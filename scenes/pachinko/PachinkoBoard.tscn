@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ettkr8e54461"]
 
 [ext_resource type="PackedScene" path="res://scenes/pachinko/Pin.tscn" id="2_pin"]
 
@@ -48,31 +48,47 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPocket" unique_id=1993905930]
 shape = SubResource("Rect_test_pocket")
 
-[node name="Pin01" type="StaticBody2D" parent="." unique_id=1721299374 instance=ExtResource("2_pin")]
+[node name="Pin01" parent="." unique_id=1721299374 instance=ExtResource("2_pin")]
 position = Vector2(-120, -180)
-[node name="Pin02" type="StaticBody2D" parent="." unique_id=1753015739 instance=ExtResource("2_pin")]
+
+[node name="Pin02" parent="." unique_id=1753015739 instance=ExtResource("2_pin")]
 position = Vector2(-60, -180)
-[node name="Pin03" type="StaticBody2D" parent="." unique_id=773853439 instance=ExtResource("2_pin")]
+
+[node name="Pin03" parent="." unique_id=773853439 instance=ExtResource("2_pin")]
 position = Vector2(0, -180)
-[node name="Pin04" type="StaticBody2D" parent="." unique_id=936285366 instance=ExtResource("2_pin")]
+
+[node name="Pin04" parent="." unique_id=936285366 instance=ExtResource("2_pin")]
 position = Vector2(60, -180)
-[node name="Pin05" type="StaticBody2D" parent="." unique_id=2060121775 instance=ExtResource("2_pin")]
+
+[node name="Pin05" parent="." unique_id=2060121775 instance=ExtResource("2_pin")]
 position = Vector2(120, -180)
-[node name="Pin06" type="StaticBody2D" parent="." unique_id=1396427107 instance=ExtResource("2_pin")]
+
+[node name="Pin06" parent="." unique_id=1396427107 instance=ExtResource("2_pin")]
 position = Vector2(-90, -100)
-[node name="Pin07" type="StaticBody2D" parent="." unique_id=219584937 instance=ExtResource("2_pin")]
+
+[node name="Pin07" parent="." unique_id=219584937 instance=ExtResource("2_pin")]
 position = Vector2(-30, -100)
-[node name="Pin08" type="StaticBody2D" parent="." unique_id=1595080220 instance=ExtResource("2_pin")]
+
+[node name="Pin08" parent="." unique_id=1595080220 instance=ExtResource("2_pin")]
 position = Vector2(30, -100)
-[node name="Pin09" type="StaticBody2D" parent="." unique_id=1829315239 instance=ExtResource("2_pin")]
+
+[node name="Pin09" parent="." unique_id=1829315239 instance=ExtResource("2_pin")]
 position = Vector2(90, -100)
-[node name="Pin10" type="StaticBody2D" parent="." unique_id=1565087769 instance=ExtResource("2_pin")]
+
+[node name="Pin10" parent="." unique_id=1565087769 instance=ExtResource("2_pin")]
 position = Vector2(-120, -20)
-[node name="Pin11" type="StaticBody2D" parent="." unique_id=1485545154 instance=ExtResource("2_pin")]
+
+[node name="Pin11" parent="." unique_id=1485545154 instance=ExtResource("2_pin")]
 position = Vector2(-60, -20)
-[node name="Pin12" type="StaticBody2D" parent="." unique_id=62424488 instance=ExtResource("2_pin")]
+
+[node name="Pin12" parent="." unique_id=62424488 instance=ExtResource("2_pin")]
 position = Vector2(0, -20)
-[node name="Pin13" type="StaticBody2D" parent="." unique_id=1096103776 instance=ExtResource("2_pin")]
+
+[node name="Pin13" parent="." unique_id=1096103776 instance=ExtResource("2_pin")]
 position = Vector2(60, -20)
-[node name="Pin14" type="StaticBody2D" parent="." unique_id=106734053 instance=ExtResource("2_pin")]
+
+[node name="Pin14" parent="." unique_id=106734053 instance=ExtResource("2_pin")]
 position = Vector2(120, -20)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=438533606]
+zoom = Vector2(0.9, 0.9)
