@@ -12,6 +12,8 @@ var _current_round: int = 1
 var _current_quota: int = 50
 var _phase: GamePhase = GamePhase.BOARD_SETUP
 
+var player: PlayerData = PlayerData.new()
+
 var current_round: int:
 	get:
 		return _current_round
@@ -40,3 +42,9 @@ var phase: GamePhase:
 			return
 		_phase = value
 		SignalBus.game_phase_changed.emit(int(_phase))
+
+
+func _ready() -> void:
+	# Убеждаемся что PlayerData создан с правильными дефолтами
+	assert(player.hp == 20, "Неверные стартовые HP")
+	assert(player.blood_spheres == 50, "Неверный стартовый запас сфер")
